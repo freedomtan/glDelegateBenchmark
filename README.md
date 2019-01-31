@@ -14,6 +14,8 @@ For the 4 public models mentioned in [1], I got the following numbers on iPhone 
 
 As far as I can tell, CPU numbers are larger than I expect, because we cannot control clock frequncies of CPUs.
 
+Check https://github.com/freedomtan/glDelegateBench/ for Android code
+
 [1] https://medium.com/tensorflow/tensorflow-lite-now-faster-with-mobile-gpus-developer-preview-e15797e6dee7
 
 [2] https://www.tensorflow.org/lite/performance/gpu
