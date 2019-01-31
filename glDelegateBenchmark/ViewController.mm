@@ -86,7 +86,7 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     }
     NSLog(@"avg: %.4lf, count: %d", total_latency / total_count,
           total_count);
-    [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency / total_count, total_count, enableGPU?@"GPU":@"CPU", numberOfThreads]];
+    [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency * 1000 / total_count, total_count, enableGPU?@"GPU":@"CPU", numberOfThreads]];
     interpreter = nullptr;
     DeleteGpuDelegate(delegate);
 }

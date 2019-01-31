@@ -17,7 +17,6 @@
 		1AFF94AC2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94AB2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite */; };
 		1AFF94AF2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94AD2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite */; };
 		1AFF94B02202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94AE2202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite */; };
-		1AFF94B22202DA8F004A0592 /* contours.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94B12202DA8F004A0592 /* contours.tflite */; };
 		5598F793C695FF497706F131 /* libPods-glDelegateBenchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B13A94A559C8FD19F38B19 /* libPods-glDelegateBenchmark.a */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 		1AFF94AB2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = multi_person_mobilenet_v1_075_float.tflite; sourceTree = "<group>"; };
 		1AFF94AD2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_257_mv_gpu.tflite; sourceTree = "<group>"; };
 		1AFF94AE2202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobile_ssd_v2_float_coco.tflite; sourceTree = "<group>"; };
-		1AFF94B12202DA8F004A0592 /* contours.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = contours.tflite; sourceTree = "<group>"; };
 		52B13A94A559C8FD19F38B19 /* libPods-glDelegateBenchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-glDelegateBenchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53C0E94836EB38587CBDEBE2 /* Pods-glDelegateBenchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-glDelegateBenchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-glDelegateBenchmark/Pods-glDelegateBenchmark.release.xcconfig"; sourceTree = "<group>"; };
 		62D4D5980CFF3E3E5C8B98CB /* Pods-glDelegateBenchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-glDelegateBenchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-glDelegateBenchmark/Pods-glDelegateBenchmark.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		1AFF94A82202BB46004A0592 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				1AFF94B12202DA8F004A0592 /* contours.tflite */,
 				1AFF94AD2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite */,
 				1AFF94AE2202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite */,
 				1AFF94AB2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite */,
@@ -178,7 +175,6 @@
 			files = (
 				1AFF949F2202B67E004A0592 /* LaunchScreen.storyboard in Resources */,
 				1AFF949C2202B67E004A0592 /* Assets.xcassets in Resources */,
-				1AFF94B22202DA8F004A0592 /* contours.tflite in Resources */,
 				1AFF949A2202B667004A0592 /* Main.storyboard in Resources */,
 				1AFF94AA2202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite in Resources */,
 				1AFF94AC2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite in Resources */,
