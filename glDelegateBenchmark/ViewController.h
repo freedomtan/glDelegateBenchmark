@@ -8,8 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+#include <cstdio>
+#include <iostream>
+#include <vector>
 
+#include "tensorflow/lite/interpreter.h"
+#include "tensorflow/lite/kernels/register.h"
+#include "tensorflow/lite/model.h"
+#include "tensorflow/lite/optional_debug_tools.h"
 
+#include "tensorflow/lite/delegates/gpu/metal_delegate.h"
+
+@interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIPickerView *gpuDelegatePicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *numberOfThreadsPicker;
+
+@property (weak, nonatomic) IBOutlet UIButton *start;
+
+- (IBAction)runIt:(id)sender;
 @end
-

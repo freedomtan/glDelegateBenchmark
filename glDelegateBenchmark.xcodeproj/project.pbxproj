@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1AFF94942202B667004A0592 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94932202B667004A0592 /* AppDelegate.m */; };
-		1AFF94972202B667004A0592 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94962202B667004A0592 /* ViewController.m */; };
+		1AFF94972202B667004A0592 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94962202B667004A0592 /* ViewController.mm */; };
 		1AFF949A2202B667004A0592 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94982202B667004A0592 /* Main.storyboard */; };
 		1AFF949C2202B67E004A0592 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF949B2202B67E004A0592 /* Assets.xcassets */; };
 		1AFF949F2202B67E004A0592 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF949D2202B67E004A0592 /* LaunchScreen.storyboard */; };
 		1AFF94A22202B67E004A0592 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94A12202B67E004A0592 /* main.m */; };
+		1AFF94AA2202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94A92202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite */; };
+		1AFF94AC2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94AB2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite */; };
+		1AFF94AF2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94AD2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite */; };
+		1AFF94B02202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94AE2202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite */; };
+		1AFF94B22202DA8F004A0592 /* contours.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94B12202DA8F004A0592 /* contours.tflite */; };
+		5598F793C695FF497706F131 /* libPods-glDelegateBenchmark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B13A94A559C8FD19F38B19 /* libPods-glDelegateBenchmark.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +26,20 @@
 		1AFF94922202B667004A0592 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AFF94932202B667004A0592 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1AFF94952202B667004A0592 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1AFF94962202B667004A0592 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1AFF94962202B667004A0592 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		1AFF94992202B667004A0592 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1AFF949B2202B67E004A0592 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AFF949E2202B67E004A0592 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AFF94A02202B67E004A0592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AFF94A12202B67E004A0592 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1AFF94A92202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobilenet_v1_1.0_224.tflite; sourceTree = "<group>"; };
+		1AFF94AB2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = multi_person_mobilenet_v1_075_float.tflite; sourceTree = "<group>"; };
+		1AFF94AD2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_257_mv_gpu.tflite; sourceTree = "<group>"; };
+		1AFF94AE2202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobile_ssd_v2_float_coco.tflite; sourceTree = "<group>"; };
+		1AFF94B12202DA8F004A0592 /* contours.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = contours.tflite; sourceTree = "<group>"; };
+		52B13A94A559C8FD19F38B19 /* libPods-glDelegateBenchmark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-glDelegateBenchmark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53C0E94836EB38587CBDEBE2 /* Pods-glDelegateBenchmark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-glDelegateBenchmark.release.xcconfig"; path = "Pods/Target Support Files/Pods-glDelegateBenchmark/Pods-glDelegateBenchmark.release.xcconfig"; sourceTree = "<group>"; };
+		62D4D5980CFF3E3E5C8B98CB /* Pods-glDelegateBenchmark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-glDelegateBenchmark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-glDelegateBenchmark/Pods-glDelegateBenchmark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5598F793C695FF497706F131 /* libPods-glDelegateBenchmark.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +58,10 @@
 			isa = PBXGroup;
 			children = (
 				1AFF94912202B667004A0592 /* glDelegateBenchmark */,
+				1AFF94A82202BB46004A0592 /* data */,
 				1AFF94902202B667004A0592 /* Products */,
+				BED6AD858E424F4574F7595D /* Pods */,
+				2DFBE9D4E5D8F2CFABFD7728 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,7 +79,7 @@
 				1AFF94922202B667004A0592 /* AppDelegate.h */,
 				1AFF94932202B667004A0592 /* AppDelegate.m */,
 				1AFF94952202B667004A0592 /* ViewController.h */,
-				1AFF94962202B667004A0592 /* ViewController.m */,
+				1AFF94962202B667004A0592 /* ViewController.mm */,
 				1AFF94982202B667004A0592 /* Main.storyboard */,
 				1AFF949B2202B67E004A0592 /* Assets.xcassets */,
 				1AFF949D2202B67E004A0592 /* LaunchScreen.storyboard */,
@@ -71,6 +89,35 @@
 			path = glDelegateBenchmark;
 			sourceTree = "<group>";
 		};
+		1AFF94A82202BB46004A0592 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				1AFF94B12202DA8F004A0592 /* contours.tflite */,
+				1AFF94AD2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite */,
+				1AFF94AE2202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite */,
+				1AFF94AB2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite */,
+				1AFF94A92202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		2DFBE9D4E5D8F2CFABFD7728 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52B13A94A559C8FD19F38B19 /* libPods-glDelegateBenchmark.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BED6AD858E424F4574F7595D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62D4D5980CFF3E3E5C8B98CB /* Pods-glDelegateBenchmark.debug.xcconfig */,
+				53C0E94836EB38587CBDEBE2 /* Pods-glDelegateBenchmark.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,6 +125,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AFF94A52202B67E004A0592 /* Build configuration list for PBXNativeTarget "glDelegateBenchmark" */;
 			buildPhases = (
+				FCF77FAF09267CFA8999029E /* [CP] Check Pods Manifest.lock */,
 				1AFF948B2202B667004A0592 /* Sources */,
 				1AFF948C2202B667004A0592 /* Frameworks */,
 				1AFF948D2202B667004A0592 /* Resources */,
@@ -130,18 +178,44 @@
 			files = (
 				1AFF949F2202B67E004A0592 /* LaunchScreen.storyboard in Resources */,
 				1AFF949C2202B67E004A0592 /* Assets.xcassets in Resources */,
+				1AFF94B22202DA8F004A0592 /* contours.tflite in Resources */,
 				1AFF949A2202B667004A0592 /* Main.storyboard in Resources */,
+				1AFF94AA2202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite in Resources */,
+				1AFF94AC2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite in Resources */,
+				1AFF94AF2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite in Resources */,
+				1AFF94B02202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FCF77FAF09267CFA8999029E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-glDelegateBenchmark-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1AFF948B2202B667004A0592 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AFF94972202B667004A0592 /* ViewController.m in Sources */,
+				1AFF94972202B667004A0592 /* ViewController.mm in Sources */,
 				1AFF94A22202B67E004A0592 /* main.m in Sources */,
 				1AFF94942202B667004A0592 /* AppDelegate.m in Sources */,
 			);
@@ -283,6 +357,7 @@
 		};
 		1AFF94A62202B67E004A0592 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62D4D5980CFF3E3E5C8B98CB /* Pods-glDelegateBenchmark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +375,7 @@
 		};
 		1AFF94A72202B67E004A0592 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53C0E94836EB38587CBDEBE2 /* Pods-glDelegateBenchmark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
