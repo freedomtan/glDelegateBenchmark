@@ -84,10 +84,11 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
         total_latency += (end - start);
         total_count++;
     }
-    NSLog(@"Time: %.4lf, avg: %.4lf, count: %d", end - start, total_latency / total_count,
+    NSLog(@"avg: %.4lf, count: %d", total_latency / total_count,
           total_count);
-    [self.textView setText: [NSString stringWithFormat: @"%@: avg: %.4lf (ms), count: %d", modelName, total_latency / total_count,
-     total_count]];
+    [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency / total_count, total_count, enableGPU?@"GPU":@"CPU", numberOfThreads]];
+    interpreter = nullptr;
+    DeleteGpuDelegate(delegate);
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
