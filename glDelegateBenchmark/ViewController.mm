@@ -86,6 +86,8 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     }
     NSLog(@"Time: %.4lf, avg: %.4lf, count: %d", end - start, total_latency / total_count,
           total_count);
+    [self.textView setText: [NSString stringWithFormat: @"%@: avg: %.4lf (ms), count: %d", modelName, total_latency / total_count,
+     total_count]];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {

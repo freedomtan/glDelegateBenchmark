@@ -22,6 +22,7 @@
 @interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIPickerView *gpuDelegatePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *numberOfThreadsPicker;
 
