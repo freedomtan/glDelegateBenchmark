@@ -45,6 +45,7 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
                     @"deeplabv3_257_mv_gpu", @"mobile_ssd_v2_float_coco",
                     @"contours"];
     modelName = @"mobilenet_v1_1.0_224";
+    [self setupCamera];
 }
 
 - (IBAction)runIt:(id)sender {
@@ -151,4 +152,44 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     modelName = _modelNames[indexPath.row];
 }
 
+
+- (void) setupCamera {
+    session = [[AVCaptureSession alloc] init];
+    [session setSessionPreset:AVCaptureSessionPresetPhoto];
+
+    inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error;
+    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
+
+    if ([session canAddInput:deviceInput]) {
+        [session addInput:deviceInput];
+    }
+
+    previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    CALayer *rootLayer = [[self view] layer];
+    [rootLayer setMasksToBounds:YES];
+    CGRect frame = self.view.frame;
+    [previewLayer setFrame:frame];
+    [rootLayer insertSublayer:previewLayer atIndex:0];
+
+    AVCaptureVideoDataOutput *videoDataOutput = [AVCaptureVideoDataOutput new];
+
+    NSDictionary *rgbOutputSettings = [NSDictionary
+                                       dictionaryWithObject:[NSNumber numberWithInt:kCMPixelFormat_32BGRA]
+                                       forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+    [videoDataOutput setVideoSettings:rgbOutputSettings];
+    [videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+    dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+    [videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+
+    if ([session canAddOutput:videoDataOutput])
+        [session addOutput:videoDataOutput];
+    [[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
+
+    [session startRunning];
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+}
 @end
