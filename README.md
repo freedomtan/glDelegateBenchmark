@@ -14,6 +14,15 @@ For the 4 public models mentioned in [1], I got the following numbers on iPhone 
 
 As far as I can tell, CPU numbers are larger than I expect, because we cannot control clock frequncies of CPUs.
 
+On iPhone 11 Pro, I got
+| model name |CPU 1 thread (ms) |CPU 2 threads (ms)   | GPU (ms)|
+|------------|-----------------:|--------------------:|--------:|
+| Mobilenet V1 1.0 224  | 26.54 | 18.21 | 10.91 |
+| PoseNet               | 34.14 | 23.62 | 16.75 |
+| DeepLab V3 (257x257)  | 39.65 | 29.87 | 20.43 |
+| Mobilnet V2 SSD COCO  | 44.94 | 34.05 | 19.73 |
+
+
 Check https://github.com/freedomtan/glDelegateBench/ for Android code
 
 [1] https://medium.com/tensorflow/tensorflow-lite-now-faster-with-mobile-gpus-developer-preview-e15797e6dee7
