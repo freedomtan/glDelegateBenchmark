@@ -15,6 +15,7 @@ For the 4 public models mentioned in [1], I got the following numbers on iPhone 
 As far as I can tell, CPU numbers are larger than I expect, because we cannot control clock frequncies of CPUs.
 
 On iPhone 11 Pro, I got
+
 | model name |CPU 1 thread (ms) |CPU 2 threads (ms)   | GPU (ms)|
 |------------|-----------------:|--------------------:|--------:|
 | Mobilenet V1 1.0 224  | 26.54 | 18.21 | 10.91 |
