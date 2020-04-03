@@ -16,9 +16,11 @@
     NSArray *_modelNames;
     
     NSString *modelName;
-    std::unique_ptr<tflite::FlatBufferModel> model;
-    tflite::ops::builtin::BuiltinOpResolver resolver;
-    std::unique_ptr<tflite::Interpreter> interpreter;
+    // std::unique_ptr<tflite::FlatBufferModel> model;
+    TfLiteModel *model;
+    // tflite::ops::builtin::BuiltinOpResolver resolver;
+    // std::unique_ptr<tflite::Interpreter> interpreter;
+    TfLiteInterpreter *interpreter;
 }
 @end
 
@@ -51,34 +53,35 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
 - (IBAction)runIt:(id)sender {
     // Load model
     NSLog(@"model: %@", modelName);
-    model = tflite::FlatBufferModel::BuildFromFile([FilePathForResourceName(modelName, @"tflite") cStringUsingEncoding: NSASCIIStringEncoding]);
-    
-    // Build the interpreter
-    tflite::InterpreterBuilder builder(*model, resolver);
-    builder(&interpreter);
-    auto* delegate = NewGpuDelegate(nullptr);  // default config
-    if (enableGPU) interpreter->ModifyGraphWithDelegate(delegate);
-    
-    // Allocate tensor buffers.
-    interpreter->AllocateTensors();
-    // printf("=== Pre-invoke Interpreter State ===\n");
-    // tflite::PrintInterpreterState(interpreter.get());
+    model = TfLiteModelCreateFromFile([FilePathForResourceName(modelName, @"tflite") cStringUsingEncoding: NSASCIIStringEncoding]);
+        
+    TfLiteInterpreterOptions* options = TfLiteInterpreterOptionsCreate();
     NSLog(@"number of threads: %d", numberOfThreads);
-    interpreter->SetNumThreads(numberOfThreads);
+    TfLiteInterpreterOptionsSetNumThreads(options, numberOfThreads);
+   
+    auto* delegate = TFLGpuDelegateCreate(nullptr);
+    if (enableGPU)
+        TfLiteInterpreterOptionsAddDelegate(options, delegate);
+    
+    interpreter = TfLiteInterpreterCreate(model, options);
+       
+    // Allocate tensor buffers.
+    TfLiteInterpreterAllocateTensors(interpreter);
+    
     // Run inference
     int total_count = 0;
     double total_latency = 0;
     double start, end;
     
     for (int i=0; i < 5; i++) {
-        if (interpreter->Invoke() != kTfLiteOk) {
+        if (TfLiteInterpreterInvoke(interpreter) != kTfLiteOk) {
             std::cerr << "Failed to invoke!";
         }
     }
     
     for (int i=0; i < 50; i++) {
         start = [[NSDate new] timeIntervalSince1970];
-        if (interpreter->Invoke() != kTfLiteOk) {
+        if (TfLiteInterpreterInvoke(interpreter) != kTfLiteOk) {
             std::cerr << "Failed to invoke!";
         }
         end = [[NSDate new] timeIntervalSince1970];
@@ -88,8 +91,8 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     NSLog(@"avg: %.4lf, count: %d", total_latency / total_count,
           total_count);
     [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency * 1000 / total_count, total_count, enableGPU?@"GPU":@"CPU", numberOfThreads]];
-    interpreter = nullptr;
-    DeleteGpuDelegate(delegate);
+    
+    TfLiteInterpreterDelete(interpreter);
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
