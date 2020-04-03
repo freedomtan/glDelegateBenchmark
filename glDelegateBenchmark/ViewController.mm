@@ -10,16 +10,14 @@
 
 @interface ViewController () {
     bool enableGPU;
+    bool enableCoreML;
     int numberOfThreads;
     NSArray *_cpuGPUData;
     NSArray *_numberOfThreadsData;
     NSArray *_modelNames;
     
     NSString *modelName;
-    // std::unique_ptr<tflite::FlatBufferModel> model;
     TfLiteModel *model;
-    // tflite::ops::builtin::BuiltinOpResolver resolver;
-    // std::unique_ptr<tflite::Interpreter> interpreter;
     TfLiteInterpreter *interpreter;
 }
 @end
@@ -39,9 +37,10 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     enableGPU = false;
+    enableCoreML = false;
     numberOfThreads = 1;
     
-    _cpuGPUData = @[@"CPU", @"GPU"];
+    _cpuGPUData = @[@"CPU", @"GPU", @"CoreML"];
     _numberOfThreadsData = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"];
     _modelNames = @[@"mobilenet_v1_1.0_224", @"multi_person_mobilenet_v1_075_float",
                     @"deeplabv3_257_mv_gpu", @"mobile_ssd_v2_float_coco",
@@ -59,9 +58,14 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     NSLog(@"number of threads: %d", numberOfThreads);
     TfLiteInterpreterOptionsSetNumThreads(options, numberOfThreads);
    
-    auto* delegate = TFLGpuDelegateCreate(nullptr);
-    if (enableGPU)
+    // auto* delegate = TFLGpuDelegateCreate(nullptr);
+    if (enableGPU) {
+        auto* delegate = TFLGpuDelegateCreate(nullptr);
         TfLiteInterpreterOptionsAddDelegate(options, delegate);
+    } else if (enableCoreML) {
+        auto* delegate = TfLiteCoreMlDelegateCreate(nullptr);
+        TfLiteInterpreterOptionsAddDelegate(options, delegate);
+    }
     
     interpreter = TfLiteInterpreterCreate(model, options);
        
@@ -90,7 +94,7 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     }
     NSLog(@"avg: %.4lf, count: %d", total_latency / total_count,
           total_count);
-    [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency * 1000 / total_count, total_count, enableGPU?@"GPU":@"CPU", numberOfThreads]];
+    [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency * 1000 / total_count, total_count, enableGPU?@"GPU":(enableCoreML?@"CoreML":@"CPU"), numberOfThreads]];
     
     TfLiteInterpreterDelete(interpreter);
 }
@@ -101,7 +105,7 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
 
 - (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if ([pickerView tag] == 0)
-        return 2;
+        return 3;
     else
         return [_numberOfThreadsData count];
 }
@@ -124,6 +128,21 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
             enableGPU = false;
         else
             enableGPU = true;
+        
+        switch (row) {
+        case 0:
+            enableGPU = false;
+            enableCoreML = false;
+            break;
+        case 1:
+            enableGPU = true;
+            enableCoreML = false;
+            break;
+        case 2:
+            enableGPU = false;
+            enableCoreML = true;
+            break;
+        }
     } else {
         numberOfThreads = (int) row + 1;
     }
