@@ -16,8 +16,8 @@ As far as I can tell, CPU numbers are larger than I expect, because we cannot co
 
 On iPhone 11 Pro, I got
 
-| model name |CPU 1 thread (ms) |CPU 2 threads (ms)| GPU (ms)| CoreML (ms)|
-|------------|-----------------:|-----------------:|--------:|-----------:|
+| model name |CPU 1 thread (ms) |CPU 2 threads (ms)| GPU (ms)| CoreML Delegate (ms) [4]|
+|------------|-----------------:|-----------------:|--------:|--------------------:|
 | Mobilenet V1 1.0 224  | 26.54 | 18.21 | 10.91 | 2.03 |
 | PoseNet               | 34.14 | 23.62 | 16.75 | 3.34 |
 | DeepLab V3 (257x257)  | 39.65 | 29.87 | 20.43 | 9.10 |
@@ -31,3 +31,5 @@ Check https://github.com/freedomtan/glDelegateBench/ for Android code
 [2] https://www.tensorflow.org/lite/performance/gpu
 
 [3] https://www.tensorflow.org/lite/performance/gpu_advanced
+
+[4] https://www.tensorflow.org/lite/performance/coreml_delegate
