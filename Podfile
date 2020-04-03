@@ -1,6 +1,8 @@
-platform :ios, '8.0'
+platform :ios, '12.0'
 inhibit_all_warnings!
 
 target 'glDelegateBenchmark'
     #pod 'TensorFlowLite'
-    pod 'TensorFlowLiteGpuExperimental'
+    #pod 'TensorFlowLiteGpuExperimental'
+    #pod 'TensorFlowLiteObjC', '~> 0.0.1-nightly'
+    pod 'TensorFlowLiteC', '~> 0.0.1-nightly'

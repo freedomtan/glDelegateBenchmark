@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3B238A220322FF008684EB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3B2389220322FF008684EB /* AVFoundation.framework */; };
+		1A3B238C2203247B008684EB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3B238B2203247B008684EB /* CoreMedia.framework */; };
 		1AFF94942202B667004A0592 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94932202B667004A0592 /* AppDelegate.m */; };
 		1AFF94972202B667004A0592 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94962202B667004A0592 /* ViewController.mm */; };
 		1AFF949A2202B667004A0592 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94982202B667004A0592 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A3B2389220322FF008684EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1A3B238B2203247B008684EB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		1AFF948F2202B667004A0592 /* glDelegateBenchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = glDelegateBenchmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AFF94922202B667004A0592 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AFF94932202B667004A0592 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A3B238C2203247B008684EB /* CoreMedia.framework in Frameworks */,
+				1A3B238A220322FF008684EB /* AVFoundation.framework in Frameworks */,
 				5598F793C695FF497706F131 /* libPods-glDelegateBenchmark.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +107,8 @@
 		2DFBE9D4E5D8F2CFABFD7728 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A3B238B2203247B008684EB /* CoreMedia.framework */,
+				1A3B2389220322FF008684EB /* AVFoundation.framework */,
 				52B13A94A559C8FD19F38B19 /* libPods-glDelegateBenchmark.a */,
 			);
 			name = Frameworks;
@@ -356,6 +364,8 @@
 			baseConfigurationReference = 62D4D5980CFF3E3E5C8B98CB /* Pods-glDelegateBenchmark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PG35EX39B6;
 				INFOPLIST_FILE = glDelegateBenchmark/Info.plist;
@@ -374,6 +384,8 @@
 			baseConfigurationReference = 53C0E94836EB38587CBDEBE2 /* Pods-glDelegateBenchmark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PG35EX39B6;
 				INFOPLIST_FILE = glDelegateBenchmark/Info.plist;

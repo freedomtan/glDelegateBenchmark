@@ -58,6 +58,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dqd-E8-oCw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -76,6 +80,7 @@
                     </view>
                     <connections>
                         <outlet property="gpuDelegatePicker" destination="SMD-Bf-Qwd" id="d63-ah-CTh"/>
+                        <outlet property="imageView" destination="Dqd-E8-oCw" id="zZI-uc-Uj1"/>
                         <outlet property="numberOfThreadsPicker" destination="Vgr-St-zqx" id="Xlv-rB-Q1r"/>
                         <outlet property="start" destination="Abz-tD-PIX" id="LgS-0y-zVZ"/>
                         <outlet property="tableView" destination="iTU-MU-JKO" id="IIM-92-Wyu"/>

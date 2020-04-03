@@ -10,15 +10,15 @@
 
 @interface ViewController () {
     bool enableGPU;
+    bool enableCoreML;
     int numberOfThreads;
     NSArray *_cpuGPUData;
     NSArray *_numberOfThreadsData;
     NSArray *_modelNames;
     
     NSString *modelName;
-    std::unique_ptr<tflite::FlatBufferModel> model;
-    tflite::ops::builtin::BuiltinOpResolver resolver;
-    std::unique_ptr<tflite::Interpreter> interpreter;
+    TfLiteModel *model;
+    TfLiteInterpreter *interpreter;
 }
 @end
 
@@ -37,47 +37,55 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     enableGPU = false;
+    enableCoreML = false;
     numberOfThreads = 1;
     
-    _cpuGPUData = @[@"CPU", @"GPU"];
+    _cpuGPUData = @[@"CPU", @"GPU", @"CoreML"];
     _numberOfThreadsData = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"];
     _modelNames = @[@"mobilenet_v1_1.0_224", @"multi_person_mobilenet_v1_075_float",
                     @"deeplabv3_257_mv_gpu", @"mobile_ssd_v2_float_coco",
                     @"contours"];
     modelName = @"mobilenet_v1_1.0_224";
+    [self setupCamera];
 }
 
 - (IBAction)runIt:(id)sender {
     // Load model
     NSLog(@"model: %@", modelName);
-    model = tflite::FlatBufferModel::BuildFromFile([FilePathForResourceName(modelName, @"tflite") cStringUsingEncoding: NSASCIIStringEncoding]);
-    
-    // Build the interpreter
-    tflite::InterpreterBuilder builder(*model, resolver);
-    builder(&interpreter);
-    auto* delegate = NewGpuDelegate(nullptr);  // default config
-    if (enableGPU) interpreter->ModifyGraphWithDelegate(delegate);
-    
-    // Allocate tensor buffers.
-    interpreter->AllocateTensors();
-    // printf("=== Pre-invoke Interpreter State ===\n");
-    // tflite::PrintInterpreterState(interpreter.get());
+    model = TfLiteModelCreateFromFile([FilePathForResourceName(modelName, @"tflite") cStringUsingEncoding: NSASCIIStringEncoding]);
+        
+    TfLiteInterpreterOptions* options = TfLiteInterpreterOptionsCreate();
     NSLog(@"number of threads: %d", numberOfThreads);
-    interpreter->SetNumThreads(numberOfThreads);
+    TfLiteInterpreterOptionsSetNumThreads(options, numberOfThreads);
+   
+    // auto* delegate = TFLGpuDelegateCreate(nullptr);
+    if (enableGPU) {
+        auto* delegate = TFLGpuDelegateCreate(nullptr);
+        TfLiteInterpreterOptionsAddDelegate(options, delegate);
+    } else if (enableCoreML) {
+        auto* delegate = TfLiteCoreMlDelegateCreate(nullptr);
+        TfLiteInterpreterOptionsAddDelegate(options, delegate);
+    }
+    
+    interpreter = TfLiteInterpreterCreate(model, options);
+       
+    // Allocate tensor buffers.
+    TfLiteInterpreterAllocateTensors(interpreter);
+    
     // Run inference
     int total_count = 0;
     double total_latency = 0;
     double start, end;
     
     for (int i=0; i < 5; i++) {
-        if (interpreter->Invoke() != kTfLiteOk) {
+        if (TfLiteInterpreterInvoke(interpreter) != kTfLiteOk) {
             std::cerr << "Failed to invoke!";
         }
     }
     
     for (int i=0; i < 50; i++) {
         start = [[NSDate new] timeIntervalSince1970];
-        if (interpreter->Invoke() != kTfLiteOk) {
+        if (TfLiteInterpreterInvoke(interpreter) != kTfLiteOk) {
             std::cerr << "Failed to invoke!";
         }
         end = [[NSDate new] timeIntervalSince1970];
@@ -86,9 +94,9 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     }
     NSLog(@"avg: %.4lf, count: %d", total_latency / total_count,
           total_count);
-    [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency * 1000 / total_count, total_count, enableGPU?@"GPU":@"CPU", numberOfThreads]];
-    interpreter = nullptr;
-    DeleteGpuDelegate(delegate);
+    [self.textView setText: [NSString stringWithFormat: @"%@:\n\tavg: %.4lf (ms), count: %d\n\t%@, number of threads = %d", modelName, total_latency * 1000 / total_count, total_count, enableGPU?@"GPU":(enableCoreML?@"CoreML":@"CPU"), numberOfThreads]];
+    
+    TfLiteInterpreterDelete(interpreter);
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
@@ -97,7 +105,7 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
 
 - (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if ([pickerView tag] == 0)
-        return 2;
+        return 3;
     else
         return [_numberOfThreadsData count];
 }
@@ -120,6 +128,21 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
             enableGPU = false;
         else
             enableGPU = true;
+        
+        switch (row) {
+        case 0:
+            enableGPU = false;
+            enableCoreML = false;
+            break;
+        case 1:
+            enableGPU = true;
+            enableCoreML = false;
+            break;
+        case 2:
+            enableGPU = false;
+            enableCoreML = true;
+            break;
+        }
     } else {
         numberOfThreads = (int) row + 1;
     }
@@ -151,4 +174,44 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     modelName = _modelNames[indexPath.row];
 }
 
+
+- (void) setupCamera {
+    session = [[AVCaptureSession alloc] init];
+    [session setSessionPreset:AVCaptureSessionPresetPhoto];
+
+    inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error;
+    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
+
+    if ([session canAddInput:deviceInput]) {
+        [session addInput:deviceInput];
+    }
+
+    previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    CALayer *rootLayer = [[self view] layer];
+    [rootLayer setMasksToBounds:YES];
+    CGRect frame = self.view.frame;
+    [previewLayer setFrame:frame];
+    [rootLayer insertSublayer:previewLayer atIndex:0];
+
+    AVCaptureVideoDataOutput *videoDataOutput = [AVCaptureVideoDataOutput new];
+
+    NSDictionary *rgbOutputSettings = [NSDictionary
+                                       dictionaryWithObject:[NSNumber numberWithInt:kCMPixelFormat_32BGRA]
+                                       forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+    [videoDataOutput setVideoSettings:rgbOutputSettings];
+    [videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+    dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+    [videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+
+    if ([session canAddOutput:videoDataOutput])
+        [session addOutput:videoDataOutput];
+    [[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
+
+    [session startRunning];
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+}
 @end
