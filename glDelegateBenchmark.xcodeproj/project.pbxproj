@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1A3B238A220322FF008684EB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3B2389220322FF008684EB /* AVFoundation.framework */; };
 		1A3B238C2203247B008684EB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3B238B2203247B008684EB /* CoreMedia.framework */; };
+		1AF87CA626C2BABC00C1B362 /* mobilebert_float_384_gpu.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AF87CA526C2BABC00C1B362 /* mobilebert_float_384_gpu.tflite */; };
+		1AF87CA826C2BB9200C1B362 /* mobilenet_edgetpu_224_1.0_float.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AF87CA726C2BB9200C1B362 /* mobilenet_edgetpu_224_1.0_float.tflite */; };
+		1AF87CAA26C2BBAE00C1B362 /* mobiledet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AF87CA926C2BBAE00C1B362 /* mobiledet.tflite */; };
+		1AF87CAC26C2BBC100C1B362 /* deeplabv3_mnv2_ade20k_float.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1AF87CAB26C2BBC100C1B362 /* deeplabv3_mnv2_ade20k_float.tflite */; };
 		1AFF94942202B667004A0592 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94932202B667004A0592 /* AppDelegate.m */; };
 		1AFF94972202B667004A0592 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFF94962202B667004A0592 /* ViewController.mm */; };
 		1AFF949A2202B667004A0592 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF94982202B667004A0592 /* Main.storyboard */; };
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		1A3B2389220322FF008684EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1A3B238B2203247B008684EB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1AF87CA526C2BABC00C1B362 /* mobilebert_float_384_gpu.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobilebert_float_384_gpu.tflite; sourceTree = "<group>"; };
+		1AF87CA726C2BB9200C1B362 /* mobilenet_edgetpu_224_1.0_float.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobilenet_edgetpu_224_1.0_float.tflite; sourceTree = "<group>"; };
+		1AF87CA926C2BBAE00C1B362 /* mobiledet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobiledet.tflite; sourceTree = "<group>"; };
+		1AF87CAB26C2BBC100C1B362 /* deeplabv3_mnv2_ade20k_float.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_mnv2_ade20k_float.tflite; sourceTree = "<group>"; };
 		1AFF948F2202B667004A0592 /* glDelegateBenchmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = glDelegateBenchmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AFF94922202B667004A0592 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AFF94932202B667004A0592 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -100,6 +108,10 @@
 				1AFF94AE2202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite */,
 				1AFF94AB2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite */,
 				1AFF94A92202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite */,
+				1AF87CA726C2BB9200C1B362 /* mobilenet_edgetpu_224_1.0_float.tflite */,
+				1AF87CA926C2BBAE00C1B362 /* mobiledet.tflite */,
+				1AF87CAB26C2BBC100C1B362 /* deeplabv3_mnv2_ade20k_float.tflite */,
+				1AF87CA526C2BABC00C1B362 /* mobilebert_float_384_gpu.tflite */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -181,12 +193,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF87CA626C2BABC00C1B362 /* mobilebert_float_384_gpu.tflite in Resources */,
 				1AFF949F2202B67E004A0592 /* LaunchScreen.storyboard in Resources */,
 				1AFF949C2202B67E004A0592 /* Assets.xcassets in Resources */,
 				1AFF949A2202B667004A0592 /* Main.storyboard in Resources */,
 				1AFF94AA2202BBE4004A0592 /* mobilenet_v1_1.0_224.tflite in Resources */,
+				1AF87CAA26C2BBAE00C1B362 /* mobiledet.tflite in Resources */,
+				1AF87CAC26C2BBC100C1B362 /* deeplabv3_mnv2_ade20k_float.tflite in Resources */,
 				1AFF94AC2202D838004A0592 /* multi_person_mobilenet_v1_075_float.tflite in Resources */,
 				1AFF94AF2202D91C004A0592 /* deeplabv3_257_mv_gpu.tflite in Resources */,
+				1AF87CA826C2BB9200C1B362 /* mobilenet_edgetpu_224_1.0_float.tflite in Resources */,
 				1AFF94B02202D91C004A0592 /* mobile_ssd_v2_float_coco.tflite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

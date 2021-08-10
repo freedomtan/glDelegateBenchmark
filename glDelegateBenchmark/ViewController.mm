@@ -44,7 +44,7 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     _numberOfThreadsData = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"];
     _modelNames = @[@"mobilenet_v1_1.0_224", @"multi_person_mobilenet_v1_075_float",
                     @"deeplabv3_257_mv_gpu", @"mobile_ssd_v2_float_coco",
-                    @"contours"];
+                    @"contours", @"mobilenet_edgetpu_224_1.0_float", @"mobiledet", @"deeplabv3_mnv2_ade20k_float", @"mobilebert_float_384_gpu"];
     modelName = @"mobilenet_v1_1.0_224";
     [self setupCamera];
 }
