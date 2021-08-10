@@ -5,4 +5,5 @@ target 'glDelegateBenchmark'
     #pod 'TensorFlowLite'
     #pod 'TensorFlowLiteGpuExperimental'
     #pod 'TensorFlowLiteObjC', '~> 0.0.1-nightly'
-    pod 'TensorFlowLiteC', '~> 0.0.1-nightly'
+    #pod 'TensorFlowLiteC', '~> 0.0.1-nightly'
+    pod 'TensorFlowLiteC', '~> 0.0.1-nightly', :subspecs => ['CoreML', 'Metal']

@@ -13,16 +13,9 @@
 #include <iostream>
 #include <vector>
 
-#if 0
-#include "tensorflow/lite/interpreter.h"
-#include "tensorflow/lite/kernels/register.h"
-#include "tensorflow/lite/model.h"
-#include "tensorflow/lite/optional_debug_tools.h"
-
-#include "tensorflow/lite/delegates/gpu/metal_delegate.h"
-#endif
-#include "TensorFlowLiteC/common.h"
 #include "TensorFlowLiteC/TensorFlowLiteC.h"
+#include "TensorFlowLiteCCoreML/TensorFlowLiteCCoreML.h"
+#include "TensorFlowLiteCMetal/TensorFlowLiteCMetal.h"
 
 @interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, AVCaptureVideoDataOutputSampleBufferDelegate> {
     AVCaptureSession *session;

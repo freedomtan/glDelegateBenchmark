@@ -63,7 +63,9 @@ NSString* FilePathForResourceName(NSString* name, NSString* extension) {
         auto* delegate = TFLGpuDelegateCreate(nullptr);
         TfLiteInterpreterOptionsAddDelegate(options, delegate);
     } else if (enableCoreML) {
-        auto* delegate = TfLiteCoreMlDelegateCreate(nullptr);
+        TfLiteCoreMlDelegateOptions coremlOptions;
+        coremlOptions.enabled_devices = TfLiteCoreMlDelegateAllDevices;
+        auto* delegate = TfLiteCoreMlDelegateCreate(&coremlOptions);
         TfLiteInterpreterOptionsAddDelegate(options, delegate);
     }
     

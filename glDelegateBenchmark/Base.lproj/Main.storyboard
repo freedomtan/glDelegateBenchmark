@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abz-tD-PIX">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abz-tD-PIX">
                                 <rect key="frame" x="171" y="617" width="32" height="30"/>
                                 <state key="normal" title="start"/>
                                 <connections>
@@ -26,7 +24,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMD-Bf-Qwd">
-                                <rect key="frame" x="16" y="447" width="149" height="162"/>
+                                <rect key="frame" x="16" y="427" width="149" height="182"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="wJA-7e-U23"/>
                                 </constraints>
@@ -36,7 +34,7 @@
                                 </connections>
                             </pickerView>
                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vgr-St-zqx">
-                                <rect key="frame" x="203" y="447" width="156" height="162"/>
+                                <rect key="frame" x="203" y="427" width="156" height="182"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="ZGd-Mp-GJs"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="YBM-gs-V0u"/>
@@ -63,6 +61,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Abz-tD-PIX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="171" id="3GB-NX-ubx"/>
@@ -76,7 +75,6 @@
                             <constraint firstItem="Vgr-St-zqx" firstAttribute="bottom" secondItem="SMD-Bf-Qwd" secondAttribute="bottom" id="ulh-Ke-oWG"/>
                             <constraint firstItem="Vgr-St-zqx" firstAttribute="top" secondItem="SMD-Bf-Qwd" secondAttribute="top" id="vom-aG-f8y"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="gpuDelegatePicker" destination="SMD-Bf-Qwd" id="d63-ah-CTh"/>
